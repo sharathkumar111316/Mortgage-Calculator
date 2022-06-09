@@ -104,14 +104,14 @@ const FormContainer = () => {
     const [loanApr, setLoanApr] = useState("");
     const [monthlyPayments, setMonthlyPayments] = useState(0.0);
     
-     const submitCalculation = async (e) => {
+     const submitCalculation =  (e) => {
         e.preventDefault();
 
         //Validate fields
-        const validatedPrice = await validateField(purchasePrice, setPurchasePrice);
-        const validatedPayment = await validateField(downPayment, setDownPayment);
-        const validatedLoanTerm = await validateField(loanTerm, setLoanTerm);
-        const validatedApr = await validateField(loanApr, setLoanApr);
+        const validatedPrice =  validateField(purchasePrice, setPurchasePrice);
+        const validatedPayment =  validateField(downPayment, setDownPayment);
+        const validatedLoanTerm =  validateField(loanTerm, setLoanTerm);
+        const validatedApr =  validateField(loanApr, setLoanApr);
 
         //Calculate Values
         if(
@@ -144,10 +144,10 @@ const FormContainer = () => {
      const validateField = (field, setvalue) => {
         let int = parseFloat(field);
         if(field === "" || field === 0) {
-            setvalue({...field.values, error: "Please enter a value"});
+            setvalue({ error: "Please enter a value" });
             return false;
         } else if(isNaN(int)) {
-            setvalue({...field.values, error: "Please enter a number"});
+            setvalue({ error: "Please enter a number" });
             return false;
         } else {
             setvalue(int);
